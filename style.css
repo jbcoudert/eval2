@@ -1,3 +1,10 @@
+@keyframes blinker {
+  50% {
+    background-color: white;
+    color: white; } }
+body {
+  font-family: 'Alata', sans-serif; }
+
 header {
   background-color: #53a945; }
   header img {
@@ -5,9 +12,15 @@ header {
   header a {
     color: white;
     text-decoration: none; }
+    header a span {
+      color: #53a945; }
+    header a:hover > span {
+      animation: blinker 1s linear infinite; }
     header a:hover {
-      font-weight: bolder;
       color: white; }
+  header .h3 {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 2rem; }
   header form .btn {
     border: 1px solid white; }
     header form .btn i {
@@ -20,39 +33,46 @@ main {
   main .main {
     display: flex;
     justify-content: center; }
-  main .bandeau {
-    font-size: 2rem;
-    font-weight: bolder;
-    text-align: center;
-    color: white;
-    background-color: #53a945; }
-  main .mainCard {
-    background-color: white;
-    margin: 0.9rem 0.5rem;
-    max-width: 23%; }
-    main .mainCard:nth-child(2n+1) {
-      background-color: #353a40;
-      color: white; }
-    main .mainCard .cardVote {
+    main .main .bandeau {
+      font-size: 2rem;
+      font-weight: bolder;
       text-align: center;
-      line-height: 1.5rem;
-      font-size: 0.8rem; }
-      main .mainCard .cardVote p {
-        padding-bottom: 2rem; }
-      main .mainCard .cardVote .fa-poop {
-        background-color: #dd4446;
-        border-radius: 50%;
-        padding: 0.8rem;
+      color: white;
+      background-color: #53a945; }
+    main .main .img {
+      background-repeat: no-repeat;
+      background-size: cover; }
+      main .main .img img {
+        width: 90%;
+        padding: 0.5rem;
+        border-radius: 50%; }
+    main .main .mainCard {
+      background-color: white;
+      margin: 0.9rem 0.5rem;
+      max-width: 23%; }
+      main .main .mainCard:nth-child(2n+2) {
+        background-color: #353a40;
         color: white; }
-      main .mainCard .cardVote .fa-heart {
-        background-color: #53a945;
-        border-radius: 50%;
-        padding: 0.8rem;
-        color: white; }
+      main .main .mainCard .cardVote {
+        text-align: center;
+        line-height: 1.5rem;
+        font-size: 0.8rem; }
+        main .main .mainCard .cardVote p {
+          margin-top: 0.5rem; }
+        main .main .mainCard .cardVote .fa-poop {
+          background-color: #dd4446;
+          border-radius: 50%;
+          padding: 0.8rem;
+          color: white; }
+        main .main .mainCard .cardVote .fa-heart {
+          background-color: #53a945;
+          border-radius: 50%;
+          padding: 0.8rem;
+          color: white; }
   main .col-12 {
     padding: 0; }
-  main img {
-    width: 100%; }
+  main .resultCard:nth-child(2), main .resultCard:nth-child(3), main .resultCard:nth-child(4) {
+    max-width: 30%; }
 
 footer {
   background-color: #53a945;
@@ -81,9 +101,9 @@ footer {
 
   main .main {
     padding: 0; }
-  main .mainCard {
-    margin: 0.5rem 0;
-    max-width: 100%; }
+    main .main .mainCard {
+      margin: 0.5rem 0;
+      max-width: 100%; }
 
   footer ul {
     padding: 0; }
