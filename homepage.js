@@ -51,14 +51,40 @@ $(document).ready(function () {
 
         bodyCard.append(imgCard, tiitleCard, textCard, votePoop, voteText, voteHeart);
 
+        var picture = sessionStorage.getItem("picture")
+        if (picture == null) {
+            picture = []
+        } else {
+            picture = JSON.parse(picture)
+        }
+
         poop.click(function () {
             var poopId = $(this).attr("id")
             var voteId = poopId.replace("btnPoop", "vote")
             var nbVote = pictures[i].votes -= 1;
-            var newText = nbVote
-            $('#' + voteId).html("Votes " + newText)
+            var newText = nbVote;
+            $('#' + voteId).html("Votes " + newText);
+            
+            var pictureFound = false
 
-        })
+            for (let j = 0; j < picture.length; j++) {
+                if (picture[j].id == GET_PARAM("id")) {
+                    picture[j].votes -= 1
+                    pictureFound = true
+                };
+            }
+                if (pictureFound == false) {
+                    var newVotes = {
+                        "id" : GET_PARAM("id"),
+                        "votes": pictures[i].votes
+                    }
+                    picture.push(newVotes)
+                }
+
+                var vote_str = JSON.stringify(picture);
+                sessionStorage.setItem("picture", vote_str);
+
+            })
 
         heart.click(function () {
             var heartId = $(this).attr("id")
@@ -66,11 +92,39 @@ $(document).ready(function () {
             var nbVote = pictures[i].votes += 1;
             var newText = nbVote
             $('#' + voteId).html("Votes " + newText)
-        })
 
+            for (let j = 0; j < picture.length; j++) {
+                if (picture[j].id == GET_PARAM("id")) {
+                    picture[j].votes += 1
+                    pictureFound = true
+                };
+            }
+                if (pictureFound == false) {
+                    var newVotes = {
+                        "id": GET_PARAM("id"),
+                        "votes": 1
+                    }
+                    picture.push(newVotes)
+                }
+
+                var vote_str = JSON.stringify(picture);
+                sessionStorage.setItem("picture", vote_str);
+
+        })
+        
 
     }
 
+    // var picture = sessionStorage.getItem("picture")
+    //     if (picture == null) {
+    //         picture = []
+    //     } else {
+    //         picture = JSON.parse(picture)
+    //     }
+
+    //     heart.click(function () {
+
+    //     });
 
     // $('i[id*="btnPoop"]').click(function () {
     //     text + $(this).attr("id").replace("btnPoop", "")

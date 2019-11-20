@@ -1,0 +1,3 @@
+html et sass ok
+création dynamique en jquery ok
+sessionstrage difficultés
